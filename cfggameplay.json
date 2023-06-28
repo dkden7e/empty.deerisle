@@ -15,7 +15,7 @@
 			"sprintStaminaModifierCro": 1.0,
 			"staminaWeightLimitThreshold": 6000.0,
 			"staminaMax": 100.0,
-			"staminaKgToStaminaPercentPenalty": 1.75,
+			"staminaKgToStaminaPercentPenalty": 1.20,
 			"staminaMinCap": 5.0,
 			"sprintSwimmingStaminaModifier": 1.0,
 			"sprintLadderStaminaModifier": 1.0,
@@ -47,7 +47,7 @@
 	},
 	"WorldsData":
 	{
-		"lightingConfig": 1,
+		"lightingConfig": 0,
 		"objectSpawnersArr": [],
 		"environmentMinTemps": [-7.0, -7.4, -4.1, 1.5, 7.0, 11.3, 13.4, 13.1, 9.3, 5.3, 0.8, -3.6],
 		"environmentMaxTemps": [-2.5, -2.1, 2.3, 9.0, 15.5, 19.4, 20.9, 20.4, 16.0, 10.5, 4.2, 0.1],
@@ -77,7 +77,7 @@
 	},
 	"UIData":
 	{
-		"use3DMap": false,
+		"use3DMap": true,
 		"HitIndicationData":
 		{
 			"hitDirectionOverrideEnabled": false,
@@ -92,9 +92,9 @@
 	},
 	"MapData":
 	{
-		"ignoreMapOwnership": false,
-		"ignoreNavItemsOwnership": false,
-		"displayPlayerPosition": false,
+		"ignoreMapOwnership": true,
+		"ignoreNavItemsOwnership": true,
+		"displayPlayerPosition": true,
 		"displayNavInfo": true
 	}
 }

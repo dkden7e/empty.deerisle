@@ -41,6 +41,7 @@ void main()
     //TestHive.ExportProxyProto();
     //TestHive.ExportProxyData( "8096 0 8096", 16384 );
     //TestHive.ExportClusterData() ;	  	
+	//EditorLoaderModule.ExportLootData = true;
 }
 
 class CustomMission: MissionServer
@@ -67,41 +68,50 @@ class CustomMission: MissionServer
 
 	override void StartingEquipSetup(PlayerBase player, bool clothesChosen)
 	{
-		EntityAI itemTop;
+		EntityAI itemClothing;
 		EntityAI itemEnt;
 		ItemBase itemBs;
-
 		float rand;
 
-		itemTop = player.FindAttachmentBySlotName("Body");
-
-		if ( itemTop )
+		itemClothing = player.FindAttachmentBySlotName( "Body" );
+		if ( itemClothing )
 		{
-			itemEnt = itemTop.GetInventory().CreateInInventory("Rag");
-
-			if ( Class.CastTo(itemBs, itemEnt ) )
-				itemBs.SetQuantity(4);
-
-			SetRandomHealth(itemEnt);
-
+			SetRandomHealth( itemClothing );
+			
+			itemEnt = itemClothing.GetInventory().CreateInInventory( "BandageDressing" );
+			if ( Class.CastTo( itemBs, itemEnt ) )
+				itemBs.SetQuantity( 2 );
+			player.SetQuickBarEntityShortcut(itemEnt, 2);
+			
 			string chemlightArray[] = { "Chemlight_White", "Chemlight_Yellow", "Chemlight_Green", "Chemlight_Red" };
-			int rndIndex = Math.RandomInt(0, 4);
-			itemEnt = itemTop.GetInventory().CreateInInventory(chemlightArray[rndIndex]);
-			
-			SetRandomHealth(itemEnt);
+			int rndIndex = Math.RandomInt( 0, 4 );
+			itemEnt = itemClothing.GetInventory().CreateInInventory( chemlightArray[rndIndex] );
+			SetRandomHealth( itemEnt );
+			player.SetQuickBarEntityShortcut(itemEnt, 3);
 
-			rand = Math.RandomFloatInclusive(0.0, 1.0);
+			rand = Math.RandomFloatInclusive( 0.0, 1.0 );
 			if ( rand < 0.35 )
-				itemEnt = player.GetInventory().CreateInInventory("Apple");
+				itemEnt = player.GetInventory().CreateInInventory( "Apple" );
 			else if ( rand > 0.65 )
-				itemEnt = player.GetInventory().CreateInInventory("Pear");
+				itemEnt = player.GetInventory().CreateInInventory( "Pear" );
 			else
-				itemEnt = player.GetInventory().CreateInInventory("Plum");
-
-			SetRandomHealth(itemEnt);
-			
-			itemEnt = player.GetInventory().CreateInInventory("Rag");
+				itemEnt = player.GetInventory().CreateInInventory( "Plum" );
+			SetRandomHealth( itemEnt );
 		}
+		
+		itemClothing = player.FindAttachmentBySlotName( "Legs" );
+		if ( itemClothing )
+			SetRandomHealth( itemClothing );
+
+			// Cuchillo de piedra
+			itemEnt = itemClothing.GetInventory().CreateInInventory("StoneKnife");
+			player.SetQuickBarEntityShortcut(itemEnt, 1);
+
+			// Walkie talkie
+			itemEnt = itemClothing.GetInventory().CreateInInventory("PersonalRadio");
+			player.SetQuickBarEntityShortcut(itemEnt, 4);
+		
+		itemClothing = player.FindAttachmentBySlotName( "Feet" );
 	}
 };
 

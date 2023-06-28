@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <messages>
+    <message>
+        <delay>2</delay>
+        <onconnect>1</onconnect>
+        <text>Bienvenid@ a Barbaland, a pasarla bien niñ@!</text>
+    </message>
+
+    <message>
+        <delay>5</delay>
+        <repeat>60</repeat>
+        <onconnect>1</onconnect>
+        <text>No olvides unirte a nuestro Discord, tienes el enlace en el menú de pausa.</text>
+    </message>
 <!--
 See https://community.bistudio.com/wiki/DayZ:Server_Messages for more information
 	
